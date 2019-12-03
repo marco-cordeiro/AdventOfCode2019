@@ -1,5 +1,6 @@
 ﻿using System;
 using AdventOfCode.Day1;
+using AdventOfCode.Day2;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventOfCode.SaveSanta
@@ -15,6 +16,7 @@ namespace AdventOfCode.SaveSanta
 
 
             serviceCollection.RegisterDay1(args);
+            serviceCollection.RegisterDay2(args);
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -22,6 +24,7 @@ namespace AdventOfCode.SaveSanta
             {
                 new AdventCodeDayChallenge<ChallengeDay1Part1>(_serviceProvider,x => x.Run()),
                 new AdventCodeDayChallenge<ChallengeDay1Part2>(_serviceProvider,x => x.Run()),
+                new AdventCodeDayChallenge<ChallengeDay2Part1>(_serviceProvider,x => x.Run()),
             };
         }
 

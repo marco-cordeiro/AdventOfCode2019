@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using AdventOfCode.Data.Provider;
 
 namespace AdventOfCode.Day1
 {
     public class ChallengeDay1Part1
     {
         private readonly FuelCalculator _calculator;
-        private readonly IInputReader<int> _dataProvider;
+        private readonly IDataProvider<int> _dataProvider;
 
-        public ChallengeDay1Part1(FuelCalculator calculator, IInputReader<int> dataProvider)
+        public ChallengeDay1Part1(FuelCalculator calculator, IDataProvider<int> dataProvider)
         {
             _calculator = calculator;
             _dataProvider = dataProvider;

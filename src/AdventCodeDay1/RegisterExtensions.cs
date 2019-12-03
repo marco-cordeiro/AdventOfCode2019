@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AdventOfCode.Data.Provider;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventOfCode.Day1
 {
@@ -13,7 +14,7 @@ namespace AdventOfCode.Day1
             services.AddTransient<ChallengeDay1Part2>();
             services.AddTransient<FuelCalculator>();
             services.AddTransient<EnhancedFuelCalculator>();
-            services.AddTransient<IInputReader<int>, IntegerInputReader>(ctx=> new IntegerInputReader(args[1]));
+            services.AddTransient<IDataProvider<int>, PrimitiveDataProvider<int>>(ctx=> new PrimitiveDataProvider<int>(args[1]));
         }
     }
 }
