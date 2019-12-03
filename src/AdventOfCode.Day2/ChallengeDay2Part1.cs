@@ -6,10 +6,10 @@ namespace AdventOfCode.Day2
 {
     public class ChallengeDay2Part1
     {
-        private readonly IntCodeProcessor _processor;
+        private readonly IntCodeComputer _processor;
         private readonly IDataProvider<string> _dataProvider;
 
-        public ChallengeDay2Part1(IntCodeProcessor processor, IDataProvider<string> dataProvider)
+        public ChallengeDay2Part1(IntCodeComputer processor, IDataProvider<string> dataProvider)
         {
             _processor = processor;
             _dataProvider = dataProvider;

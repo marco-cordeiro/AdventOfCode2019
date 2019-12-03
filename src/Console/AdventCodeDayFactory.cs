@@ -14,7 +14,6 @@ namespace AdventOfCode.SaveSanta
         {
             var serviceCollection = new ServiceCollection();
 
-
             serviceCollection.RegisterDay1(args);
             serviceCollection.RegisterDay2(args);
 
@@ -25,6 +24,7 @@ namespace AdventOfCode.SaveSanta
                 new AdventCodeDayChallenge<ChallengeDay1Part1>(_serviceProvider,x => x.Run()),
                 new AdventCodeDayChallenge<ChallengeDay1Part2>(_serviceProvider,x => x.Run()),
                 new AdventCodeDayChallenge<ChallengeDay2Part1>(_serviceProvider,x => x.Run()),
+                new AdventCodeDayChallenge<ChallengeDay2Part2>(_serviceProvider,x => x.Run()),
             };
         }
 

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AdventOfCode.Tests.Day2
 {
-    public class IntCodeProcessorTests
+    public class IntCodeComputerTests
     {
         [Test]
         [TestCase("1,9,10,3,2,3,11,0,99,30,40,50", ExpectedResult = "3500,9,10,70,2,3,11,0,99,30,40,50")]
@@ -15,7 +15,7 @@ namespace AdventOfCode.Tests.Day2
         public string Program_Execution_Should_Result(string code)
         {
             var memory = code.Split(',').Select(int.Parse).ToArray();
-            var sut = new IntCodeProcessor();
+            var sut = new IntCodeComputer();
 
             memory = sut.Process(memory);
 

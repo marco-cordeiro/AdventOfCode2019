@@ -11,8 +11,8 @@ namespace AdventOfCode.Day2
                 return;
 
             services.AddTransient<ChallengeDay2Part1>();
-            //services.AddTransient<ChallengeDay1Part2>();
-            services.AddTransient<IntCodeProcessor>();
+            services.AddTransient<ChallengeDay2Part2>();
+            services.AddTransient<IntCodeComputer>();
             services.AddTransient<IDataProvider<string>, StringDataProvider>(ctx=> new StringDataProvider(args[1]));
         }
     }

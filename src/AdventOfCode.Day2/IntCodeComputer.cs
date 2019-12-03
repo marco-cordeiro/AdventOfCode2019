@@ -1,29 +1,26 @@
 ﻿using System;
-using System.Linq;
 
 namespace AdventOfCode.Day2
 {
-    public class IntCodeProcessor
+    public class IntCodeComputer
     {
         public int[] Process(int[] memory)
         {
-            var cursor = 0;
+            var instructionPointer = 0;
 
             while (true)
             {
-                var opCode = memory[cursor++];
+                var opCode = memory[instructionPointer++];
 
-                (var valid, var opCodeFunc) = ValidateOpCode(opCode);
+                var (valid, opCodeFunc) = ValidateOpCode(opCode);
+                if (!valid) break;
 
-                if (!valid)
-                    break;
-
-                var posValue1 = memory[cursor++];
-                var posValue2 = memory[cursor++];
+                var posValue1 = memory[instructionPointer++];
+                var posValue2 = memory[instructionPointer++];
 
                 var value1 = memory[posValue1];
                 var value2 = memory[posValue2];
-                var posResult = memory[cursor++];
+                var posResult = memory[instructionPointer++];
 
                 memory[posResult] = opCodeFunc(value1, value2);
             }
