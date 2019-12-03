@@ -33,9 +33,10 @@ namespace AdventOfCode.SaveSanta
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
-            _challenges = new[]
+            _challenges = new IAdventCodeDayChallenge[]
             {
-                new AdventCodeDayChallenge<ChallengeDay1>(_serviceProvider,x => x.Run()),
+                new AdventCodeDayChallenge<ChallengeDay1Part1>(_serviceProvider,x => x.Run()),
+                new AdventCodeDayChallenge<ChallengeDay2Part2>(_serviceProvider,x => x.Run()),
             };
         }
 
@@ -68,5 +69,4 @@ namespace AdventOfCode.SaveSanta
             _callback(subject);
         }
     }
-
 }
