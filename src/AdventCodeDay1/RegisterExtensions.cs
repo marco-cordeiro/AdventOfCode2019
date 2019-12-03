@@ -10,7 +10,7 @@ namespace AdventOfCode.Day1
                 return;
 
             services.AddTransient<ChallengeDay1Part1>();
-            services.AddTransient<ChallengeDay2Part2>();
+            services.AddTransient<ChallengeDay1Part2>();
             services.AddTransient<FuelCalculator>();
             services.AddTransient<EnhancedFuelCalculator>();
             services.AddTransient<IInputReader<int>, IntegerInputReader>(ctx=> new IntegerInputReader(args[1]));
