@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.9.0" />
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
@@ -15,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\AdventCodeDay1\AdventOfCode.Day1.csproj" />
     <ProjectReference Include="..\..\src\AdventOfCode.Day2\AdventOfCode.Day2.csproj" />
+    <ProjectReference Include="..\..\src\AdventOfCode.Day3\AdventOfCode.Day3.csproj" />
   </ItemGroup>
 
 </Project>
