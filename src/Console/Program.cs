@@ -13,7 +13,8 @@ namespace AdventOfCode.SaveSanta
             var day = int.Parse(args[0]);
 
             var challenge = adventFactory.Get(day);
-            challenge.Execute();
+            var challengeExecutor = new AdventCodeDayChallenge(challenge);
+            challengeExecutor.Execute();
         }
     }
 }

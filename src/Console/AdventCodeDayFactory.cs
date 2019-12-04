@@ -9,37 +9,36 @@ namespace AdventOfCode.SaveSanta
 {
     internal class AdventCodeDayFactory
     {
-        private readonly IAdventCodeDayChallenge[] _challenges;
-        private readonly IServiceProvider _serviceProvider;
+        private readonly object[] _challenges;
 
         public AdventCodeDayFactory(string[] args)
         {
             var serviceCollection = new ServiceCollection();
-
+            
             serviceCollection.RegisterDay1(args);
             serviceCollection.RegisterDay2(args);
             serviceCollection.RegisterDay3(args);
             serviceCollection.RegisterDay4(args);
 
-            _serviceProvider = serviceCollection.BuildServiceProvider();
+            IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
-            _challenges = new IAdventCodeDayChallenge[]
+            _challenges = new object[]
             {
-                new AdventCodeDayChallenge<ChallengeDay1Part1>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay1Part2>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay2Part1>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay2Part2>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay3Part1>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay3Part2>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay4Part1>(_serviceProvider,x => x.Run()),
-                new AdventCodeDayChallenge<ChallengeDay4Part2>(_serviceProvider,x => x.Run()),
+                serviceProvider.GetService<ChallengeDay1Part1>(),
+                serviceProvider.GetService<ChallengeDay1Part2>(),
+                serviceProvider.GetService<ChallengeDay2Part1>(),
+                serviceProvider.GetService<ChallengeDay2Part2>(),
+                serviceProvider.GetService<ChallengeDay3Part1>(),
+                serviceProvider.GetService<ChallengeDay3Part2>(),
+                serviceProvider.GetService<ChallengeDay4Part1>(),
+                serviceProvider.GetService<ChallengeDay4Part2>(),
             };
         }
 
         public IAdventCodeDayChallenge Get(int day)
         {
             day--;
-            return _challenges[day];
+            return new AdventCodeDayChallenge(_challenges[day]);
         }
     }
 }

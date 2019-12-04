@@ -1,23 +1,28 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventOfCode.SaveSanta
 {
-    internal class AdventCodeDayChallenge<T> : IAdventCodeDayChallenge where T : class
+    internal class AdventCodeDayChallenge : IAdventCodeDayChallenge
     {
-        private readonly IServiceProvider _serviceProvider;
-        private readonly Action<T> _callback;
+        private readonly object _challenge;
+        private readonly MethodInfo _methodCallback;
 
-        public AdventCodeDayChallenge(IServiceProvider serviceProvider, Action<T> callback)
+        public AdventCodeDayChallenge(object challenge)
         {
-            _serviceProvider = serviceProvider;
-            _callback = callback;
+            _challenge = challenge;
+            _methodCallback = _challenge.GetType().GetMethods()
+                .FirstOrDefault(m => m.IsPublic && m.GetGenericArguments().Length == 0);
         }
 
         public void Execute()
         {
-            var subject = _serviceProvider.GetService<T>();
-            _callback(subject);
+            if (_methodCallback == null)
+                throw new ArgumentException($"Failed to find a valid callback for {_challenge.GetType().Name}");
+
+            _methodCallback.Invoke(_challenge, null);
         }
     }
 }
