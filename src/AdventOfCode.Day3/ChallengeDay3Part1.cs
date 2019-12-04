@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
 using AdventOfCode.Data.Provider;
 
 namespace AdventOfCode.Day3
