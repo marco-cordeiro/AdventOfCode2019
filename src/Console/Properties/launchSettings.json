@@ -2,7 +2,7 @@
   "profiles": {
     "SaveSanta": {
       "commandName": "Project",
-      "commandLineArgs": "8"
+      "commandLineArgs": "9 input/day5.txt"
     }
   }
 }

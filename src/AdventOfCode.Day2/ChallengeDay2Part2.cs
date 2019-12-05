@@ -4,6 +4,8 @@ using AdventOfCode.Data.Provider;
 
 namespace AdventOfCode.Day2
 {
+    using IntCodeComputer;
+
     public class ChallengeDay2Part2
     {
         private readonly IntCodeComputer _processor;

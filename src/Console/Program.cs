@@ -10,10 +10,9 @@ namespace AdventOfCode.SaveSanta
                 throw new ArgumentOutOfRangeException(nameof(args), "please pass the event day");
 
             var adventFactory = new AdventCodeDayFactory(args);
-            var day = int.Parse(args[0]);
+            var challenge = int.Parse(args[0]);
 
-            var challenge = adventFactory.Get(day);
-            var challengeExecutor = new AdventCodeDayChallenge(challenge);
+            var challengeExecutor = adventFactory.Get(challenge);
             challengeExecutor.Execute();
         }
     }

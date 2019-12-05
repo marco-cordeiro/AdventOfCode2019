@@ -1,12 +1,16 @@
 ﻿using System;
+using AdventOfCode.Data.Provider;
 using AdventOfCode.Day1;
 using AdventOfCode.Day2;
 using AdventOfCode.Day3;
 using AdventOfCode.Day4;
+using AdventOfCode.Day5;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventOfCode.SaveSanta
 {
+    using IntCodeComputer;
+
     internal class AdventCodeDayFactory
     {
         private readonly object[] _challenges;
@@ -14,11 +18,18 @@ namespace AdventOfCode.SaveSanta
         public AdventCodeDayFactory(string[] args)
         {
             var serviceCollection = new ServiceCollection();
-            
-            serviceCollection.RegisterDay1(args);
-            serviceCollection.RegisterDay2(args);
-            serviceCollection.RegisterDay3(args);
-            serviceCollection.RegisterDay4(args);
+
+            serviceCollection.AddSingleton(x => Console.In);
+            serviceCollection.AddSingleton(x => Console.Out);
+            serviceCollection.AddTransient<IntCodeComputer>();
+            serviceCollection.AddTransient<IDataProvider<int>, PrimitiveDataProvider<int>>(ctx => new PrimitiveDataProvider<int>(args[1]));
+            serviceCollection.AddTransient<IDataProvider<string>, StringDataProvider>(ctx => new StringDataProvider(args[1]));
+
+            serviceCollection.RegisterDay1();
+            serviceCollection.RegisterDay2();
+            serviceCollection.RegisterDay3();
+            serviceCollection.RegisterDay4();
+            serviceCollection.RegisterDay5();
 
             IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -32,13 +43,15 @@ namespace AdventOfCode.SaveSanta
                 serviceProvider.GetService<ChallengeDay3Part2>(),
                 serviceProvider.GetService<ChallengeDay4Part1>(),
                 serviceProvider.GetService<ChallengeDay4Part2>(),
+                serviceProvider.GetService<ChallengeDay5>(),
+                serviceProvider.GetService<ChallengeDay5>(),
             };
         }
 
-        public IAdventCodeDayChallenge Get(int day)
+        public IAdventCodeDayChallenge Get(int challenge)
         {
-            day--;
-            return new AdventCodeDayChallenge(_challenges[day]);
+            challenge--;
+            return new AdventCodeDayChallenge(_challenges[challenge]);
         }
     }
 }

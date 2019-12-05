@@ -1,17 +1,16 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using AdventOfCode.Data.Provider;
 
-namespace AdventOfCode.Day2
+namespace AdventOfCode.Day5
 {
     using IntCodeComputer;
 
-    public class ChallengeDay2Part1
+    public class ChallengeDay5
     {
         private readonly IntCodeComputer _processor;
         private readonly IDataProvider<string> _dataProvider;
 
-        public ChallengeDay2Part1(IntCodeComputer processor, IDataProvider<string> dataProvider)
+        public ChallengeDay5(IntCodeComputer processor, IDataProvider<string> dataProvider)
         {
             _processor = processor;
             _dataProvider = dataProvider;
@@ -23,12 +22,7 @@ namespace AdventOfCode.Day2
 
             var memory = code.Split(',').Select(int.Parse).ToArray();
 
-            // restore to the "1202 program alarm" state
-            memory[1] = 12;
-            memory[2] = 2;
-            memory = _processor.Process(memory);
-
-            Console.WriteLine($"Program output : {memory[0]}");
+            _processor.Process(memory);
         }
     }
 }
