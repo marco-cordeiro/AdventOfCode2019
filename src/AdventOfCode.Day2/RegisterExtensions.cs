@@ -10,7 +10,6 @@ namespace AdventOfCode.Day2
         {
             services.AddTransient<ChallengeDay2Part1>();
             services.AddTransient<ChallengeDay2Part2>();
-            services.AddTransient<IntCodeComputer>();
         }
     }
 }
