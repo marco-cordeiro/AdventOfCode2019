@@ -1,12 +1,11 @@
 using System.IO;
 using System.Linq;
+using AdventOfCode.IntCode;
 using NSubstitute;
 using NUnit.Framework;
 
 namespace AdventOfCode.Tests.Day2
 {
-    using IntCodeComputer;
-
     public class IntCodeComputerTests
     {
         [Test]
@@ -17,8 +16,8 @@ namespace AdventOfCode.Tests.Day2
         [TestCase("1,1,1,4,99,5,6,0,99", ExpectedResult = "30,1,1,4,2,5,6,0,99")]
         public string Program_Execution_Should_Result(string code)
         {
-            var input = Substitute.For<TextReader>();
-            var output = Substitute.For<TextWriter>();
+            var input = Substitute.For<IComputerInput>();
+            var output = Substitute.For<IComputerOutput>();
             var memory = code.Split(',').Select(int.Parse).ToArray();
             var sut = new IntCodeComputer(input, output);
 

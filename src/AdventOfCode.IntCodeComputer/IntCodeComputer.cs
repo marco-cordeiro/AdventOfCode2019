@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace AdventOfCode.IntCodeComputer
+namespace AdventOfCode.IntCode
 {
     public class IntCodeComputer
     {
-        private readonly TextReader _input;
-        private readonly TextWriter _output;
-        private Dictionary<int, MethodInfo> _opCodes;
+        private readonly IComputerInput _input;
+        private readonly IComputerOutput _output;
+        private readonly Dictionary<int, MethodInfo> _opCodes;
 
-        public IntCodeComputer(TextReader input, TextWriter output)
+        public IntCodeComputer(IComputerInput input, IComputerOutput output)
         {
             _input = input;
             _output = output;
 
-            var methods = this.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(m => m.IsPrivate && m.Name.StartsWith("OpCode"));// && m.GetGenericArguments().Length == 0);
+            var methods = typeof(IntCodeComputer).GetMethods(BindingFlags.Instance | BindingFlags.NonPublic )
+                .Where(m => m.IsPrivate && m.Name.StartsWith("OpCode"));
 
             _opCodes = methods.ToDictionary(m => int.Parse(m.Name.Substring(6)));
         }
@@ -82,9 +81,7 @@ namespace AdventOfCode.IntCodeComputer
         private int OpCode3(int[] memory, int instructionPointer, byte mode1, byte mode2, byte mode3)
         {
             var resultPos = memory.Read(instructionPointer++);
-
-            _output.Write("Id :");
-            var value = int.Parse(_input.ReadLine());
+            var value = _input.Read();
 
             memory[resultPos] = value;
 
@@ -95,7 +92,7 @@ namespace AdventOfCode.IntCodeComputer
         {
             var value = memory.Read(instructionPointer++, mode1); 
             
-            _output.WriteLine(value);
+            _output.Write(value);
 
             return instructionPointer;
         }
@@ -149,7 +146,5 @@ namespace AdventOfCode.IntCodeComputer
 
             return instructionPointer;
         }
-
-
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using AdventOfCode.Data.Provider;
+using AdventOfCode.IntCode;
 
 namespace AdventOfCode.Day2
 {
-    using IntCodeComputer;
-
     public class ChallengeDay2Part1
     {
         private readonly IntCodeComputer _processor;

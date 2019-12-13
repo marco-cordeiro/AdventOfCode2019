@@ -6,12 +6,12 @@ using AdventOfCode.Day3;
 using AdventOfCode.Day4;
 using AdventOfCode.Day5;
 using AdventOfCode.Day6;
+using AdventOfCode.Day7;
+using AdventOfCode.IntCode;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventOfCode.SaveSanta
 {
-    using IntCodeComputer;
-
     internal class AdventCodeDayFactory
     {
         private readonly object[] _challenges;
@@ -22,6 +22,8 @@ namespace AdventOfCode.SaveSanta
 
             serviceCollection.AddSingleton(x => Console.In);
             serviceCollection.AddSingleton(x => Console.Out);
+            serviceCollection.AddTransient<IComputerInput, StandardComputerInput>();
+            serviceCollection.AddTransient<IComputerOutput, StandardComputerOutput>();
             serviceCollection.AddTransient<IntCodeComputer>();
             serviceCollection.AddTransient<IDataProvider<int>, PrimitiveDataProvider<int>>(ctx => new PrimitiveDataProvider<int>(args[1]));
             serviceCollection.AddTransient<IDataProvider<string>, StringDataProvider>(ctx => new StringDataProvider(args[1]));
@@ -32,6 +34,7 @@ namespace AdventOfCode.SaveSanta
             serviceCollection.RegisterDay4();
             serviceCollection.RegisterDay5();
             serviceCollection.RegisterDay6();
+            serviceCollection.RegisterDay7();
 
             IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -49,6 +52,7 @@ namespace AdventOfCode.SaveSanta
                 serviceProvider.GetService<ChallengeDay5>(),
                 serviceProvider.GetService<ChallengeDay6Part1>(),
                 serviceProvider.GetService<ChallengeDay6Part2>(),
+                serviceProvider.GetService<ChallengeDay7>(),
             };
         }
 

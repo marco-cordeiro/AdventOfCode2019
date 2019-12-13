@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day4", "src\Ad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day5", "src\AdventOfCode.Day5\AdventOfCode.Day5.csproj", "{8FEC7B47-021F-4116-B82C-927A025515F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.IntCodeComputer", "src\AdventOfCode.IntCodeComputer\AdventOfCode.IntCodeComputer.csproj", "{9C0BB42B-F3E6-46A9-AC5A-2147AAD5D0E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.IntCode", "src\AdventOfCode.IntCodeComputer\AdventOfCode.IntCode.csproj", "{9C0BB42B-F3E6-46A9-AC5A-2147AAD5D0E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day6", "src\AdventOfCode.Day6\AdventOfCode.Day6.csproj", "{42AF04F5-CCB2-4BD4-B85F-145462E9A3AE}"
 EndProject

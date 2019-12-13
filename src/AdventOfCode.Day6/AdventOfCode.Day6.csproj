@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdventOfCode.Data.Provider\AdventOfCode.Data.Provider.csproj" />
-    <ProjectReference Include="..\AdventOfCode.IntCodeComputer\AdventOfCode.IntCodeComputer.csproj" />
+    <ProjectReference Include="..\AdventOfCode.IntCodeComputer\AdventOfCode.IntCode.csproj" />
     <ProjectReference Include="..\AdventOfCode.Navigation\AdventOfCode.OrbitalNavigation.csproj" />
   </ItemGroup>
 

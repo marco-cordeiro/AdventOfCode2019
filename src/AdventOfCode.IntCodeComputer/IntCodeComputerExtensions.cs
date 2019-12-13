@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdventOfCode.IntCodeComputer
+namespace AdventOfCode.IntCode
 {
     public static class IntCodeComputerExtensions
     {

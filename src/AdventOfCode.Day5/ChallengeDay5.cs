@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AdventOfCode.Data.Provider;
+using AdventOfCode.IntCode;
 
 namespace AdventOfCode.Day5
 {
-    using IntCodeComputer;
-
     public class ChallengeDay5
     {
         private readonly IntCodeComputer _processor;
@@ -22,6 +22,7 @@ namespace AdventOfCode.Day5
 
             var memory = code.Split(',').Select(int.Parse).ToArray();
 
+            Console.Write("Id :");
             _processor.Process(memory);
         }
     }
