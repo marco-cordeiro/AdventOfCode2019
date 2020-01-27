@@ -14,15 +14,20 @@ namespace AdventOfCode.Day7
 
         public IAmplifier this[int index] => _amplifiers[index];
 
-        public int Amplify()
+        public int Amplify(bool useFeedback = false)
         {
+            var previousValue = -1;
             var value = 0;
-            foreach (var amplifier in _amplifiers)
+            while ((useFeedback && previousValue <= value) || (!useFeedback && previousValue < 0))
             {
-                value = amplifier.Amplify(value);
+                previousValue = value;
+                foreach (var amplifier in _amplifiers)
+                {
+                    value = amplifier.Amplify(value);
+                }
             }
 
-            return value;
+            return useFeedback ? previousValue : value;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace AdventOfCode.Tests.Day7
             var memory = code.Split(',').Select(int.Parse);
             var sut = factory.Build(memory, phases);
 
-            var result = sut.Amplify();
+            var result = sut.Amplify(true);
 
             return result;
         }

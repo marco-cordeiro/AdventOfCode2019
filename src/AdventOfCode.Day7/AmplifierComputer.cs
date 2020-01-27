@@ -19,8 +19,8 @@ namespace AdventOfCode.Day7
 
         public int Process(int phase, int value)
         {
-            _input.PushInput(value);
             _input.PushInput(phase);
+            _input.PushInput(value);
             Process(_memory);
             return _output.PopResult();
         }

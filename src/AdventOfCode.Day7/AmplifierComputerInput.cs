@@ -4,21 +4,21 @@ namespace AdventOfCode.Day7
 {
     public class AmplifierComputerInput : IAmplifierComputerInput
     {
-        private readonly Stack<int> _values;
+        private readonly Queue<int> _values;
 
         public AmplifierComputerInput()
         {
-            _values = new Stack<int>();
+            _values = new Queue<int>();
         }
 
         public int Read()
         {
-            return _values.Pop();
+            return _values.Dequeue();
         }
 
         public void PushInput(int value)
         {
-            _values.Push(value);
+            _values.Enqueue(value);
         }
     }
 }
